@@ -13,7 +13,7 @@ class ModelName(models.Model):
 
 class Employees(models.Model):
     Name = models.CharField(max_length=30)
-    Website = models.CharField(max_length=30)
+    Website = models.URLField(max_length=30)
     Point_of_contact = models.EmailField(max_length=20)
     profile_picture = models.ImageField()
     Goal= models.Choices()
