@@ -15,7 +15,30 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+from django.conf.urls import url
+from clients.views import dashboard, register
+from clients.views import clientsListView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+]
+
+# clients/urls.py
+
+from django.conf.urls import include, url
+from clients.views import dashboard, register
+
+urlpatterns = [
+    url(r"^accounts/", include("django.contrib.auth.urls")),
+    url(r"^dashboard/", dashboard, name="dashboard"),
+    url(r"^register/", register, name="register"),
+     url(r"^", include("clients.urls")),
+      url(r"^admin/", admin.site.urls),
+]
+
+
+
+
+urlpatterns = [
+    path('clientslists', clientsListView.as_view(), name='clients-list'),
 ]
